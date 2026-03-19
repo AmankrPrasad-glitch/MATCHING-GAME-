@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Memory Match</title>
+
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app" role="application" aria-label="Memory match game">
+    <div class="game">
+      <div class="top">
+        <div>
+          <div class="title">Memory Match — Dark Demo</div>
+          <div class="small">Flip two cards, find matching pairs.</div>
+        </div>
+
+        <div class="controls" aria-hidden="false">
+          <button id="newBtn">New Game</button>
+          <label>
+            <select id="sizeSelect" aria-label="Select grid size">
+              <option value="4">4×4</option>
+              <option value="6">6×6</option>
+            </select>
+          </label>
+          <button id="hintBtn">Hint</button>
+        </div>
+      </div>
+
+      <div class="stats" aria-live="polite">
+        <div>Moves: <strong id="moves">0</strong></div>
+        <div>Pairs: <strong id="pairs">0</strong>/<span id="totalPairs">0</span></div>
+        <div>Time: <strong id="time">0</strong>s</div>
+      </div>
+
+      <div class="board-wrap" id="boardWrap">
+        <div id="board" class="board" role="grid" aria-live="polite" aria-label="Game board"></div>
+      </div>
+    </div>
+
+    <aside class="sidebar" aria-label="Matched pairs">
+      <h3>Matched Pairs</h3>
+      <div class="small">Each pair you find will appear here</div>
+      <div id="matchedList" class="matched-list" aria-live="polite" aria-atomic="true"></div>
+      <div class="footer-note">Tip: Press Enter on a focused card to flip it (keyboard accessible).</div>
+    </aside>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+        content="width=device-width,initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body{
+                margin: 0;
+                height: 100yh;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe ui', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                background: linear-gradient(180deg, rgb(7,18,40));
+                color: rgb(243,217,217);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+            }
+
+            .app{
+                width: 990px;
+                max-width: 96vw;
+                display: grid;
+                gap: 20px;
+                border-radius: 10px;
+                background: linear-gradient(180deg, rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+                grid-template-columns: 1fr 240px;
+                padding: 18px;
+                box-shadow: 0 12px 40px rgba(2,7,23,0.065);
+            }
+            .game{
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+            .top{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 8px;
+            }
+            .title{
+                font-weight: 700;
+                font-size: 0.95rem;
+            }
+            .control{
+                display: flex;
+                gap: 8px;
+                align-items: center;
+
+            }
+            select,button{
+                padding: 8px 10px;
+                border-radius: 8px;
+                border; 0;
+                cursor: pointer;
+                font-weight: 600;
+                
+            }
+            button{
+                background: rgb(96,165,250);
+                color: rgb(6,34,58);
+            }
+            select{
+                background: rgb(255,255,255,0.02);
+                color: rgb(243,217,217);
+
+            }
+            stats{
+                display: flex;
+                gap: 12px;
+                align-items: center;
+                color: rgba(159,179,209);
+                font-size: 0.95rem;
+            }
+
+            .board-wrap{
+                border-radius: 10px;
+                box-shadow: inset 0 6px 14px rgba(0,0,0,0.031);
+                background: rgb(11,22,36);
+                padding; 14px;
+            }
+            .board{
+                display: grid;
+                gap: 10px;
+                juatify-items: center;
+                align-items: center;
+                grid-auto-rows: 100px; 
+            }
+            .sidebar{
+                background: linear-gradient(180deg, rgb(7,24,39) rgb(11,38,48));
+                border-radius: 10px;
+                padding: 10px;
+                display:flex;
+                flex-direction: column;
+                gap: 10px;
+                min-height: 360px;
+                align-items: stretch;
+            }
+            .sidebar h3{
+                margin: 0;
+                font-size: 12px;
+                color: rgb(96,165,250);
+
+            }
+            .matched-list{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                background: rgb(255,255,255,0.02);
+                padding: 8px;
+                border-radius: 8px;
+                min-height: 120px;
+
+            }
+            .pair{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 46px;
+                height: 46px;
+                border-radius: 8px;
+                border: 1px solid rgba(0, 0, 0, 0.05);
+                font-size: 22px;
+                color: rgb(243,217,217);
+
+            }
+            .small{
+                font-size: 0.90rem;
+                color: rgb(159,179,209);
+
+            }
+
+            .footer-note{
+                font-size: 0.85rem;
+                color: rgba(159,179,209);
+            }
+
+            @media (max-width: 920px){
+                .app{
+                    grid-template-columns: 1fr;
+                    padding: 14px;
+                    gap: 12px;
+                }
+
+                .sidebar{
+                    order: 2;
+
+                }
+
+            }
+
+            
+
+        </style>
+        
+    </head>
+    <body>
+       <div class="app" role="application" aria-lable="Memory Match Game">
+        <div class="game">
+            <div class="top">
+                <div>
+                    <div class = "title">Memory Match</div>
+                    <div class="small">Flip Two Cards, Find matching pairs.</div>
+                </div>
+            </div>
+            <div class="controls" aria-hidden="false">
+                <button>New Game</button>
+                <div>
+                    <select id="sizeselect" aria-hidden="false">
+                        <option value="4">4x4</option>
+                        <option value="6">6x6</option>
+                    </select>
+                    <button id="hintBtn">Hint</button>
+                </div>
+            </div>
+            <div class="stats" aria-live="polite">
+                <div>Moves : <strong id="movese">0</strong></div>
+                <div>Pairs: <strong id="pairs">0</strong></div>
+                <div>Time:<strong id="time">0</strong></div>
+            </div>
+        </div>
+
+        <div class="board-wrap" id="boardwrap">
+            <div id="board" role="grid" aria-live="polite" aria-lable="Game Board"></div>
+        </div>
+        <div class="sidebar" aria-lable="Matched Pairs">
+            <h3>Matched Pairs</h3>
+            <div class="small">Each Pair you find will appear here.</div>
+            <div id="matchedList" class="matched-list" aria-live="polite" aria-atomic="true"></div>
+            <div class="footer-note">Tip: Press Enter on a focused card to flip it (keyboard accessible).</div>
+        </div>
+        
+       </div>
+    </body>
+</html>
